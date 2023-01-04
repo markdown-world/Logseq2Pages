@@ -7,6 +7,7 @@ Logseq originally had the ability to export HTML, but after exporting, all the m
 # Steps
 
 * Add `logseq.toml` to the root directory
-* Copy `gen.rb` to the root directory
+* Copy `/gen.rb` & `/Gemfile` to the root directory
+* Copy `/template/*`  to the root directory
 * Configure `.github/workflows/gh-pages.yml`
 * Configure `GitHub Pages` for the repository
