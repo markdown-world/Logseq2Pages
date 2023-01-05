@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="page-wrapper with-navbar">
+    <div class="page-wrapper with-sidebar with-navbar">
         <nav class="navbar">
             <a href="index.html" class="navbar-brand">Logseq To GitHub Pages</a>
         </nav>
@@ -25,13 +25,10 @@
         <div class="content-wrapper" style="position: absolute;right: 0;">
             <div id="graph"></div>
             <script>
-/*
                 fetch('./data.json').then(res => res.json()).then(gData => {
                     const Graph = ForceGraph()
                     (document.getElementById('graph'))
                     .height(window.innerHeight - 50)
-                    .width(window.innerWidth - 370)
-                    .d3Force('right', null)
                     .nodeCanvasObject((node, ctx, globalScale) => {
                         const fontSize = 16 / globalScale;
                         ctx.font = `${fontSize}px Sans-Serif`;
@@ -47,7 +44,6 @@
                     .linkDirectionalArrowLength(6)
                     .graphData(gData);
                 });
-*/                
             </script>
         </div>
     </div>
