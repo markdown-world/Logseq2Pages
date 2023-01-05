@@ -30,6 +30,7 @@
                     (document.getElementById('graph'))
                     .height(window.innerHeight - 50)
                     .width(window.innerWidth - 370)
+                    .d3Force('right', null)
                     .nodeCanvasObject((node, ctx, globalScale) => {
                         const fontSize = 16 / globalScale;
                         ctx.font = `${fontSize}px Sans-Serif`;
