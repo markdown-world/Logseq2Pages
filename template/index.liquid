@@ -22,10 +22,32 @@
           </ul>
         </div>
       </div>
-      <div class="content-wrapper" style="margin-left:20px">
-          {% for journal_html in journal_list %}
-            {{journal_html}}
-          {% endfor %}
+      <div class="content-wrapper" style="margin-left:50px">
+        {% for journal_html in journal_list %}
+        {{journal_html}}
+        {% endfor %}
+        <br />
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item">
+              <a href="{{pagination.previous}}" class="page-link">
+                <i class="fa fa-angle-left" aria-hidden="true"><</i>              
+              </a>
+            </li>
+            {% for page_item in pagination.pages %}
+              {% if page_item.active == true %}
+                <li class="page-item active"><a href="{{page_item.url}}" class="page-link">{{page_item.number}}</a></li>
+              {% else %}
+                <li class="page-item"><a href="{{page_item.url}}" class="page-link">{{page_item.number}}</a></li>
+              {% endif %}
+            {% endfor %}
+            <li class="page-item">
+              <a href="{{pagination.next}}" class="page-link">
+                <i class="fa fa-angle-right" aria-hidden="true">></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   </body>
