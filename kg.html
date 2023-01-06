@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="page-wrapper with-navbar">
+    <div class="page-wrapper with-sidebar with-navbar">
         <nav class="navbar">
             <a href="index.html" class="navbar-brand">Logseq To GitHub Pages</a>
         </nav>
@@ -28,7 +28,7 @@
                 fetch('./data.json').then(res => res.json()).then(gData => {
                     const Graph = ForceGraph()
                     (document.getElementById('graph'))
-                    .height(window.innerHeight - 50)
+                    .height(window.innerHeight - 50)                    
                     .nodeCanvasObject((node, ctx, globalScale) => {
                         const fontSize = 16 / globalScale;
                         ctx.font = `${fontSize}px Sans-Serif`;
