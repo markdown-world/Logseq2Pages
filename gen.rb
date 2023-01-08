@@ -37,6 +37,19 @@ def get_pagination(url, count, number)
     return pagination, f
 end
 
+def add_page(site, page)
+    if site.references[page.item_name]
+        return {
+            "item_name"=>page.item_name, 
+            "references"=>site.references[page.item_name].size,
+            "ctime"=>page.ctime,
+            "mtime"=>page.mtime
+        }
+    else
+        return {"item_name"=>page.item_name, "references"=>0, "ctime"=>page.ctime, "mtime"=>page.mtime}
+    end
+end
+
 site = MarkdownExtension::Site.new("./logseq.toml", :logseq)
 site_name = site.config.title ? site.config.title : "My Logseq"
 unless Dir.exists?("./site")
@@ -77,12 +90,12 @@ page_count = (site.pages.size / 20) + 1
     pages = []
     if page_number == page_count
         site.pages[page_start..-1].each do |page|
-            pages << {"item_name"=>page.item_name}
+            pages << add_page(site, page)
         end        
     else
         site.pages[page_start..page_start+20].each do |page|
-            pages << {"item_name"=>page.item_name}
-        end        
+            pages << add_page(site, page)
+        end
     end
     f.puts(template.render('config'=>{'title'=>site_name}, 'pages'=>pages, 'pagination'=>pagination))
     f.close
@@ -91,7 +104,7 @@ end
 
 template = Liquid::Template.parse(File.read("./template/page.liquid"))
 site.pages.each do |page|
-    filename = "./site/" + page.item_name + ".html"
+    filename = "./site/#{page.item_name}.html"
     f = File.new(filename, "w")
     f.puts template.render(
         'config'=>{'title'=>site_name},
