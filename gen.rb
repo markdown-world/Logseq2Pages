@@ -52,7 +52,7 @@ end
 
 site = MarkdownExtension::Site.new("./logseq.toml", :logseq)
 site_name = site.config.title ? site.config.title : "My Logseq"
-unless Dir.exists?("./site")
+unless Dir.exist?("./site")
     Dir.mkdir("site")
 end
 
@@ -113,7 +113,7 @@ site.pages.each do |page|
     f.close
 end
 
-if Dir.exists?("./assets")
+if Dir.exist?("./assets")
     `cp -r ./assets ./site/assets`
     `cp tree.js ./site/tree.js`
 end
