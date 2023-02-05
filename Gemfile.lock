@@ -1,14 +1,19 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    debug (1.7.1)
     kramdown (2.4.0)
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
     liquid (5.4.0)
-    markdown_extension (0.1.5)
+    markdown_extension (0.1.6)
       kramdown (~> 2.0)
       kramdown-parser-gfm (~> 1.0)
+      tomlrb (~> 2.0.0)
+    markdown_site (0.0.2)
+      liquid (~> 5.4.0)
+      markdown_extension (~> 0.1.6)
       tomlrb (~> 2.0.0)
     rexml (3.2.5)
     tomlrb (2.0.3)
@@ -17,10 +22,12 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  debug
   kramdown
   kramdown-parser-gfm
   liquid
   markdown_extension
+  markdown_site
   tomlrb
 
 BUNDLED WITH
